@@ -146,13 +146,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void sendEmail(){
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"robhumphres@gmail.com"});
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"audioplusmike@qwestoffice.net"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Quick Job " + jobName.getText());
         i.putExtra(Intent.EXTRA_TEXT   ,
                   "Hours of job: \n" +
                         "Start Time: " + startTimeText.getText() +
                         "\nStop Time: " + stopTimeText.getText() +
-                        "\n\nNotes from the job " + jobNotes.getText())
+                        "\n\nNotes from the job \n" + jobNotes.getText())
         ;
         try {
             startActivity(Intent.createChooser(i, "Send mail..."));
