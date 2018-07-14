@@ -3,23 +3,19 @@ package com.example.forexamplejohn.quickaplusjob;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//Date import Stuff
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,7 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             jobNameString = "jobName",
             startTimeString = "startTime",
             stopTimeString = "stopTime",
-            jobNoteString = "jobNote";
+            jobNoteString = "jobNote",
+            emailToSendTo = "audioplusmike@qwestoffice.net";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         stopTimeButton = findViewById(R.id.button_stopTimeButton);
         stopTimeButton.setOnClickListener(this);
 
-        //Textviews
+        //Textviews on Main Activity
         startTimeText = findViewById(R.id.textView_startTime);
         stopTimeText = findViewById(R.id.textView_stopTime);
         jobName = findViewById(R.id.editText_jobName);
         jobNotes = findViewById(R.id.editText_jobNotes);
 
+        //Checks System Prefs, if anything's filled in will populate activity
         tryFillingData();
 
     }
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String temp;
 
 
-        if(settings.getString("jobName",null)!= null){
+        if(settings.getString(jobNameString,null)!= null){
             temp = settings.getString(jobNameString,"blank");
             jobName.setText(temp);
         }
@@ -113,12 +113,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        setData();
-//    }
-
     @Override
     public void onClick(View view) {
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
@@ -146,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void sendEmail(){
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"audioplusmike@qwestoffice.net"});
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{emailToSendTo});
         i.putExtra(Intent.EXTRA_SUBJECT, "Quick Job " + jobName.getText());
         i.putExtra(Intent.EXTRA_TEXT   ,
                   "Hours of job: \n" +
@@ -163,9 +157,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setData(){
         setPreferenceData(jobName.getText(),startTimeText.getText(),stopTimeText.getText(),jobNotes.getText());
-        Toast.makeText(this, "Save Data", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     protected void onStart() {
@@ -193,11 +186,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editor.putString(stopTimeString,s3.toString());
         editor.putString(jobNoteString,s4.toString());
         editor.commit();
-
-//        SharedPreferences settings = getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-//        String temp;
-
-
 
     }
 
