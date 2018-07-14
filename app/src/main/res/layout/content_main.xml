@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/textView_audioQuickSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="38dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="16dp"
+        android:text="Audio Plus Quick Send"
+        app:layout_constraintEnd_toEndOf="@+id/editText_jobName"
+        app:layout_constraintStart_toStartOf="@+id/button_startTimeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_jobName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Job Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/button_stopTimeButton" />
+
+    <Button
+        android:id="@+id/button_startTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="22dp"
+        android:text="Start Time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_audioQuickSend" />
+
+    <TextView
+        android:id="@+id/textView_stopTime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Stop Time"
+        app:layout_constraintBottom_toBottomOf="@+id/button_stopTimeButton"
+        app:layout_constraintEnd_toEndOf="@+id/textView_startTime"
+        app:layout_constraintStart_toStartOf="@+id/textView_startTime"
+        app:layout_constraintTop_toTopOf="@+id/button_stopTimeButton" />
+
+    <TextView
+        android:id="@+id/textView_startTime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:text="Start Time"
+        app:layout_constraintBottom_toBottomOf="@+id/button_startTimeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_startTimeButton"
+        app:layout_constraintTop_toTopOf="@+id/button_startTimeButton" />
+
+    <Button
+        android:id="@+id/button_stopTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="Stop Time"
+        app:layout_constraintStart_toStartOf="@+id/button_startTimeButton"
+        app:layout_constraintTop_toBottomOf="@+id/button_startTimeButton" />
+
+    <EditText
+        android:id="@+id/editText_jobNotes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="Enter Notes here"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/button_clearData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:text="Notes and Parts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_sendEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Email"
+        app:layout_constraintEnd_toEndOf="@+id/editText_jobNotes"
+        app:layout_constraintTop_toBottomOf="@+id/editText_jobNotes" />
+
+    <Button
+        android:id="@+id/button_clearData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="471dp"
+        android:text="Clear Data"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
